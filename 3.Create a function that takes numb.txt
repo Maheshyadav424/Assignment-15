@@ -1,0 +1,33 @@
+3.Create a function that takes numbers b and m as arguments and
+returns the second derivative of the function f(x)=x^b +x* (e^(b*m))
+with respect to x evaluated at x=m, where b and m are constants. 
+
+ANS:
+
+function secondDerivativeAtM(b, m) {
+  // First derivative of f(x) = x^b + x * (e^(b*m))
+  const firstDerivative = (x) => b * Math.pow(x, b - 1) + (eulerPower(b * m) * (1 + b * x));
+  
+  // Second derivative of the first derivative
+  const secondDerivative = (x) => b * (b - 1) * Math.pow(x, b - 2) + (b * b * eulerPower(b * m) * x);
+  
+  // Evaluate the second derivative at x = m
+  const result = secondDerivative(m);
+  return result;
+}
+
+// Helper function for e^(b * m)
+function eulerPower(value) {
+  return Math.exp(value);
+}
+
+// Test case
+const b = 2;
+const m = 1;
+const result = secondDerivativeAtM(b, m);
+console.log(result); // Output depends on the values of b and m
+
+
+
+NOTE:
+Replace the values of b and m with the constants you have, and the function will compute and return the second derivative of the given function evaluated at x = m. The eulerPower function calculates e^(b * m) using the Math.exp function.
